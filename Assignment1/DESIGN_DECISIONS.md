@@ -26,7 +26,7 @@ This document details key design choices, trade-offs, and implementation reasoni
 - Execution: `java -cp bin <ClassName>`
 - No external dependencies
 
-**Trade-offs**: ✅ Simple, portable | ❌ No dependency injection, custom test framework
+**Trade-offs**: Simple, portable | No dependency injection, custom test framework
 
 ---
 
@@ -46,8 +46,8 @@ This document details key design choices, trade-offs, and implementation reasoni
 - **Why**: Advanced demonstration, real-world relevance, complex thread-safe resize
 
 **Trade-offs**: 
-- Fixed: ✅ Simple, predictable | ❌ Fixed capacity limiting
-- Dynamic: ✅ Adapts to workload | ❌ Complex, resize overhead
+- Fixed: Simple, predictable |  Fixed capacity limiting
+- Dynamic: Adapts to workload |  Complex, resize overhead
 
 ---
 
@@ -59,7 +59,7 @@ This document details key design choices, trade-offs, and implementation reasoni
 
 **Implementation**: Named threads (`ProducerThread-1`, `ConsumerThread-1`), shared queue instance
 
-**Trade-offs**: ✅ Better concurrency demonstration | ❌ More complex debugging
+**Trade-offs**:  Better concurrency demonstration | More complex debugging
 
 ---
 
@@ -75,7 +75,7 @@ This document details key design choices, trade-offs, and implementation reasoni
 - Use `notifyAll()` for multiple waiting threads
 - Queue object itself is the monitor
 
-**Trade-offs**: ✅ Educational, required | ❌ More error-prone than high-level APIs
+**Trade-offs**: Educational, required |  More error-prone than high-level APIs
 
 **Alternatives Considered**: `BlockingQueue`, `ReentrantLock` - rejected (assignment requires custom implementation)
 
@@ -97,7 +97,7 @@ This document details key design choices, trade-offs, and implementation reasoni
 - Element loss → careful copying
 - Order preservation → FIFO maintained
 
-**Trade-offs**: ✅ Adapts to workload | ❌ Complex, resize overhead
+**Trade-offs**:  Adapts to workload | Complex, resize overhead
 
 ---
 
@@ -117,7 +117,7 @@ This document details key design choices, trade-offs, and implementation reasoni
 
 **Why 30 seconds?**: Long enough to detect stuck consumers, short enough to be responsive
 
-**Trade-offs**: ✅ Prevents overflow, efficient waiting | ❌ Adds complexity
+**Trade-offs**:  Prevents overflow, efficient waiting |  Adds complexity
 
 ---
 
@@ -131,7 +131,7 @@ This document details key design choices, trade-offs, and implementation reasoni
 
 **Approach**: Custom assertions, thread testing with `Thread.join()`, verify item counts
 
-**Trade-offs**: ✅ No dependencies, comprehensive | ❌ No framework features
+**Trade-offs**:  No dependencies, comprehensive | No framework features
 
 ---
 
@@ -166,7 +166,7 @@ Project1/
 - Fixed: `java -cp bin InteractiveProducer`
 - Dynamic: `java -cp bin InteractiveProducer --dynamic`
 
-**Trade-offs**: ✅ Clear organization | ❌ Slightly more complex structure
+**Trade-offs**:  Clear organization |  Slightly more complex structure
 
 ---
 
@@ -175,11 +175,11 @@ Project1/
 ## Conclusion
 
 This implementation demonstrates:
-- ✅ Thread synchronization with wait/notify
-- ✅ Concurrent programming patterns
-- ✅ Blocking queue implementation
-- ✅ Flow control mechanisms
-- ✅ Thread-safe operations
-- ✅ Graceful shutdown
+-  Thread synchronization with wait/notify
+-  Concurrent programming patterns
+-  Blocking queue implementation
+-  Flow control mechanisms
+-  Thread-safe operations
+-  Graceful shutdown
 
 All decisions prioritized: assignment requirements, educational value, code quality, testing, and documentation.
